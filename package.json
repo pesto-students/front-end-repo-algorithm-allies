@@ -1,68 +1,64 @@
 {
-  "name": "tailor-my-resume-server",
-  "version": "1.0.0",
-  "description": "tailor-my-resume",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "debug": "nodemon --inspect server.js",
-    "test": "jest --detectOpenHandles  --forceExit --coverage --silent",
-    "test-with-logs": "jest --detectOpenHandles --forceExit",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org ashutosh-p9 --project node-express ./client/build && sentry-cli sourcemaps upload --org ashutosh-p9 --project node-express ./client/build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aashutoshPanda/tailor-my-resume.git"
-  },
-  "keywords": [],
-  "author": "Ashutosh Panda",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/aashutoshPanda/tailor-my-resume/issues"
-  },
-  "homepage": "https://github.com/aashutoshPanda/tailor-my-resume#readme",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
+    "@date-io/date-fns": "^2.17.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@iconify/react": "^4.1.1",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/joy": "^5.0.0-beta.24",
+    "@mui/material": "^5.15.3",
+    "@mui/x-date-pickers": "^6.18.7",
+    "@reduxjs/toolkit": "^2.0.1",
     "@sentry/cli": "^2.27.0",
-    "@sentry/node": "^7.99.0",
-    "@sentry/profiling-node": "^1.3.5",
-    "babel-jest": "^29.7.0",
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "cloudinary": "^1.41.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "express-rate-limit": "^7.1.5",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.4",
-    "openai": "^4.26.0"
+    "@sentry/react": "^7.99.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.5",
+    "better-react-mathjax": "^2.0.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "moment": "^2.30.1",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "^5.0.1",
+    "react-zoom-pan-pinch": "^3.3.0",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "nodemon": "^3.0.2",
-    "prettier": "^2.8.8",
-    "supertest": "^6.3.4"
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
-  "prettier": {
-    "printWidth": 120
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && npm run sentry:sourcemaps",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
+    "eject": "react-scripts eject",
+    "test-with-coverage": "npm run test -- --coverage .",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org ashutosh-p9 --project tailor-my-resume-client ./build && sentry-cli sourcemaps upload --org ashutosh-p9 --project tailor-my-resume-client ./build"
   },
-  "type": "module",
-  "jest": {
-    "roots": [
-      "tests"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "testTimeout": 5000,
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "html"
-    ],
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/src/utils/cloudinary.js",
-      "<rootDir>/src/services/improveWithAI.js"
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
